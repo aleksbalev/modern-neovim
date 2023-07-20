@@ -1,7 +1,5 @@
 local keymap = vim.keymap.set
 
-keymap("n", "<leader>pv", vim.cmd.Ex)
-
 -- Remap for dealing with word wrap
 keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })

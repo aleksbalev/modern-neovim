@@ -1,6 +1,6 @@
 return {
   "goolord/alpha-nvim",
-  event = "VimEnter",
+  lazy = false,
   config = function()
     local dashboard = require "alpha.themes.dashboard"
     dashboard.section.header.val = require("plugins.dashboard.logo")["random"]
@@ -9,8 +9,8 @@ return {
       dashboard.button("n", " " .. " New file", ":ene <BAR> startinsert <CR>"),
       dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
       dashboard.button("g", " " .. " Find text", ":Telescope live_grep <CR>"),
-      dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
       dashboard.button("s", "勒" .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
+      dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
       dashboard.button("l", "鈴" .. " Lazy", ":Lazy<CR>"),
       dashboard.button("q", " " .. " Quit", ":qa<CR>"),
     }
@@ -23,18 +23,15 @@ return {
     dashboard.section.buttons.opts.hl = "AlphaButtons"
     dashboard.opts.layout[1].val = 0
 
-    -- close Lazy and re-open when the dashboard is ready
     if vim.o.filetype == "lazy" then
+      -- close and re-open Lazy after showing alpha
+      vim.notify("Missing plugins installed!", vim.log.levels.INFO, { title = "lazy.nvim" })
       vim.cmd.close()
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "AlphaReady",
-        callback = function()
-          require("lazy").show()
-        end,
-      })
+      require("alpha").setup(dashboard.opts)
+      require("lazy").show()
+    else
+      require("alpha").setup(dashboard.opts)
     end
-
-    require("alpha").setup(dashboard.opts)
 
     vim.api.nvim_create_autocmd("User", {
       pattern = "LazyVimStarted",
@@ -47,7 +44,7 @@ return {
         local fortune = require "alpha.fortune"
         local quote = table.concat(fortune(), "\n")
         local plugins = "⚡Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
-        local footer = "\t" .. version .. "\t" .. plugins .. "\n" .. quote
+        local footer = "\t" .. version ..   "\t" .. plugins .. "\n" .. quote
         dashboard.section.footer.val = footer
         pcall(vim.cmd.AlphaRedraw)
       end,
