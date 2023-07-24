@@ -22,7 +22,8 @@ return {
       servers = {
         -- html
         html = {
-          filetypes = { "html", "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+          filetypes = { "html", "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact",
+            "typescript.tsx" },
         },
         -- Emmet
         emmet_ls = {
@@ -44,7 +45,11 @@ return {
     "jose-elias-alvarez/null-ls.nvim",
     opts = function(_, opts)
       local nls = require "null-ls"
-      table.insert(opts.sources, nls.builtins.formatting.prettierd)
+      table.insert(opts.sources, nls.builtins.formatting.prettierd.with({
+        condition = function(utils)
+          return utils.has_file({ ".prettierrc" })
+        end,
+      }))
     end,
   },
   {
@@ -61,9 +66,10 @@ return {
     opts = {},
     cmd = { "CccPick", "CccConvert", "CccHighlighterEnable", "CccHighlighterDisable", "CccHighlighterToggle" },
     keys = {
-      { "<leader>zp", "<cmd>CccPick<cr>", desc = "Pick" },
-      { "<leader>zc", "<cmd>CccConvert<cr>", desc = "Convert" },
+      { "<leader>zp", "<cmd>CccPick<cr>",              desc = "Pick" },
+      { "<leader>zc", "<cmd>CccConvert<cr>",           desc = "Convert" },
       { "<leader>zh", "<cmd>CccHighlighterToggle<cr>", desc = "Toggle Highlighter" },
     },
   },
 }
+

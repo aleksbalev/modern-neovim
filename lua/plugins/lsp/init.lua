@@ -3,9 +3,9 @@ return {
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
     dependencies = {
-      { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-      { "folke/neodev.nvim", config = true },
-      { "j-hui/fidget.nvim", config = true },
+      { "folke/neoconf.nvim",      cmd = "Neoconf", config = true },
+      { "folke/neodev.nvim",       config = true },
+      { "j-hui/fidget.nvim",       config = true },
       { "smjonas/inc-rename.nvim", config = true },
       "simrat39/rust-tools.nvim",
       "rust-lang/rust.vim",
@@ -45,8 +45,8 @@ return {
       local nls = require "null-ls"
       nls.setup {
         sources = {
-          nls.builtins.formatting.stylua,
-          nls.builtins.diagnostics.ruff.with { extra_args = { "--max-line-length=180" } },
+          nls.builtins.formatting.prettierd,
+          nls.builtins.diagnostics.ruff.with { extra_args = { "--max-line-length=80" } },
         },
       }
     end,

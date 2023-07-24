@@ -77,7 +77,7 @@ return {
         formatting = {
           fields = { "kind", "abbr", "menu" },
           format = function(entry, item)
-            local max_width = 0
+            local max_width = 80
             local source_names = {
               nvim_lsp = "(LSP)",
               path = "(Path)",
