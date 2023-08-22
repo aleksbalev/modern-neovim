@@ -11,7 +11,7 @@ return {
     view = {
       number = true,
       relativenumber = true,
-      width = 50,
+      width = 75,
     },
     filters = {
       custom = { ".git" },
