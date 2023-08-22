@@ -40,13 +40,6 @@ return {
         t = { name = "+Test", N = { name = "Neotest" }, o = { "Overseer" } },
         v = { name = "+View" },
         z = { name = "+System" },
-        -- stylua: ignore
-        s = {
-          name = "+Search",
-          c = { function() require("utils.coding").cht() end, "Cheatsheets", },
-          s = { function() require("utils.coding").stack_overflow() end, "Stack Overflow", },
-          -- n = { name = "+Noice" },
-        },
         c = {
           name = "+Code",
           g = { name = "Annotation" },

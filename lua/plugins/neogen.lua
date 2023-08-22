@@ -44,4 +44,3 @@ return {
     { "<leader>cgt", function() require("neogen").generate { type = "type" } end,  desc = "Type", },
   },
 }
-

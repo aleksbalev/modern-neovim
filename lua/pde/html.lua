@@ -22,8 +22,7 @@ return {
       servers = {
         -- html
         html = {
-          filetypes = { "html", "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact",
-            "typescript.tsx" },
+          filetypes = { "html", "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
         },
         -- Emmet
         emmet_ls = {
@@ -45,11 +44,7 @@ return {
     "jose-elias-alvarez/null-ls.nvim",
     opts = function(_, opts)
       local nls = require "null-ls"
-      table.insert(opts.sources, nls.builtins.formatting.prettierd.with({
-        condition = function(utils)
-          return utils.has_file({ ".prettierrc" })
-        end,
-      }))
+      table.insert(opts.sources, nls.builtins.formatting.prettierd)
     end,
   },
   {
@@ -57,7 +52,8 @@ return {
     event = "VeryLazy",
     opts = {
       defaults = {
-        ["<leader>lz"] = { name = "+Color" },
+        ["<leader>z"] = { name = "+System" },
+        ["<leader>zC"] = { name = "+Color" },
       },
     },
   },
@@ -66,10 +62,9 @@ return {
     opts = {},
     cmd = { "CccPick", "CccConvert", "CccHighlighterEnable", "CccHighlighterDisable", "CccHighlighterToggle" },
     keys = {
-      { "<leader>zp", "<cmd>CccPick<cr>",              desc = "Pick" },
-      { "<leader>zc", "<cmd>CccConvert<cr>",           desc = "Convert" },
-      { "<leader>zh", "<cmd>CccHighlighterToggle<cr>", desc = "Toggle Highlighter" },
+      { "<leader>zCp", "<cmd>CccPick<cr>", desc = "Pick" },
+      { "<leader>zCc", "<cmd>CccConvert<cr>", desc = "Convert" },
+      { "<leader>zCh", "<cmd>CccHighlighterToggle<cr>", desc = "Toggle Highlighter" },
     },
   },
 }
-
