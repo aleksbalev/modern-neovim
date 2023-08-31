@@ -52,6 +52,7 @@ opt.wildmode = "longest:full,full"
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
+vim.g.loaded_matchparen = true
 
 vim.g.markdown_recommended_style = 0
 

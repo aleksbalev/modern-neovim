@@ -68,19 +68,19 @@ keymap("n", "<C-j>", "<C-w>j")
 keymap("n", "<C-k>", "<C-w>k")
 keymap("n", "<C-l>", "<C-w>l")
 
-keymap("x", "<leader>p", "\"_dP")
+keymap("x", "<leader>p", '"_dP')
 
-keymap("n", "<leader>y", "\"+y")
-keymap("v", "<leader>y", "\"+y")
-keymap("n", "<leader>Y", "\"+Y")
+keymap("n", "<leader>y", '"+y')
+keymap("v", "<leader>y", '"+y')
+keymap("n", "<leader>Y", '"+Y')
 
 keymap("n", "Q", "<nop>")
 
 -- Auto indent
 keymap("n", "i", function()
-  if #vim.fn.getline "." == 0 then
-    return [["_cc]]
-  else
-    return "i"
-  end
+	if #vim.fn.getline(".") == 0 then
+		return [["_cc]]
+	else
+		return "i"
+	end
 end, { expr = true })
