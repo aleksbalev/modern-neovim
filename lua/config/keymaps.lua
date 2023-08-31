@@ -4,6 +4,9 @@ local keymap = vim.keymap.set
 keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 
+keymap("v", "J", ":m '>+1<CR>gv=gv")
+keymap("v", "K", ":m '<-2<CR>gv=gv")
+
 -- Better viewing
 keymap("n", "n", "nzzzv")
 keymap("n", "N", "Nzzzv")
@@ -55,8 +58,6 @@ keymap("n", "<S-Right>", "<cmd>vertical resize +2<CR>")
 -- Insert blank line
 keymap("n", "]<Space>", "o<Esc>")
 keymap("n", "[<Space>", "O<Esc>")
-
-keymap("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 keymap("n", "<leader>fl", "<C-w>v<C-w>l<CR>")
 keymap("n", "<leader>fh", "<C-w>v<C-w>h<CR>")

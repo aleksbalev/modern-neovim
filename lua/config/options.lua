@@ -32,7 +32,7 @@ opt.scrolloff = 8
 opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
 opt.shiftround = true
 opt.shiftwidth = 2
-opt.shortmess:append { W = true, I = true, c = true, C = true }
+opt.shortmess:append({ W = true, I = true, c = true, C = true })
 opt.showcmd = false
 opt.showmode = false
 opt.sidescrolloff = 8
@@ -52,7 +52,6 @@ opt.wildmode = "longest:full,full"
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
-vim.g.loaded_matchparen = true
 
 vim.g.markdown_recommended_style = 0
 
